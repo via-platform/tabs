@@ -1,7 +1,7 @@
 {
-    "name": "title-bar",
+    "name": "tabs",
     "version": "1.0.0",
-    "description": "VIA title bar.",
+    "description": "VIA workspace tabs.",
     "main": "./lib/main",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,10 +9,9 @@
     "keywords": [
         "via",
         "trading",
-        "title",
-        "bar"
+        "tabs"
     ],
-    "repository": "https://bitbucket.org/via-trading/title-bar",
+    "repository": "https://bitbucket.org/via-trading/tabs",
     "author": "Dakota Gordon",
     "engines": {
         "via": "*"
@@ -23,10 +22,6 @@
         "underscore-plus": "^1.0.0"
     },
     "configSchema": {
-        "isVisible": {
-            "type": "boolean",
-            "default": true,
-            "description": "Show title bar at the top of the workspace."
-        }
+        
     }
 }
