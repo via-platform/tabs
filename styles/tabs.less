@@ -1,10 +1,13 @@
-@tab-height: 28px;
-@tab-background-color: @pane-background-color;
+@tab-height: 29px;
+@tab-background-color: #222; //@workspace-background-color;
+@tab-active-background-color: @pane-background-color;
 
 @tab-font-size: 12px;
+@tab-color: #AAAAAA;
+@tab-active-color: #FFFFFF;
 
 @close-icon-size: 16px;
-@close-icon-background-color: #444;
+@close-icon-background-color: #666;
 @close-icon-border-radius: 2px;
 
 .tab-bar
@@ -22,15 +25,29 @@
         padding: 0 (@close-icon-size + @tab-height - @close-icon-size);
         -webkit-user-drag: element;
         flex: 1;
-        // max-width: 220px;
+        background-color: @tab-background-color;
         min-width: 40px;
         transition: max-width .25s ease-in-out;
         height: @tab-height;
+        border-bottom: 1px solid @pane-border-color;
+        border-right: 1px solid @pane-border-color;
+
+        &:last-child
+        {
+            border-right-color: transparent;
+        }
 
         &.active
         {
             // flex: 2;
             // width: -webkit-fit-content;
+            background-color: @pane-background-color;
+            border-bottom-color: transparent;
+
+            .title
+            {
+                color: @tab-active-color;
+            }
         }
 
         .title
@@ -41,6 +58,7 @@
             line-height: @tab-height;
             font-size: @tab-font-size;
             text-align: center;
+            color: @tab-color;
         }
 
         .hide-icon
@@ -60,10 +78,22 @@
             width: @close-icon-size;
             height: @close-icon-size;
             border-radius: @close-icon-border-radius;
-            background-color: @close-icon-background-color;
+            background-color: transparent;
             background-repeat: no-repeat;
             background-size: 10px 10px;
             background-position: 3px 4px;
+            transform: scale(0);
+            transition: transform ease 0.1s;
+
+            &:hover
+            {
+                background-color: @close-icon-background-color;
+            }
+        }
+
+        &:hover .close-icon
+        {
+            transform: scale(1);
         }
     }
 
