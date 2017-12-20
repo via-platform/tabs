@@ -1,7 +1,7 @@
 {
     "name": "tabs",
     "version": "0.1.1",
-    "description": "VIA workspace tabs.",
+    "description": "Via workspace tabs.",
     "main": "./lib/main",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
         "trading",
         "tabs"
     ],
-    "repository": "https://bitbucket.org/via-trading/tabs",
+    "repository": "https://github.com/via-platform/tabs",
     "author": "Dakota Gordon",
     "engines": {
         "via": "*"

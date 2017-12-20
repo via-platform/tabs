@@ -1,13 +1,15 @@
-@tab-height: 29px;
-@tab-background-color: #222; //@workspace-background-color;
-@tab-active-background-color: @pane-background-color;
+@tab-height: 30px;
+@tab-background-color: @dock-background-color;
+@tab-active-background-color: #282828;//@pane-background-color;
 
 @tab-font-size: 12px;
-@tab-color: #AAAAAA;
-@tab-active-color: #FFFFFF;
+@tab-color: @text-color-subtle;
+@tab-active-color: @text-color;
+@tab-border-color: #000;//@pane-border-color;
+@tab-border-width: 1px;//@pane-border-width;
 
 @close-icon-size: 16px;
-@close-icon-background-color: #666;
+@close-icon-background-color: #CCC;
 @close-icon-border-radius: 2px;
 
 .tab-bar
@@ -16,7 +18,9 @@
     -webkit-user-select: none;
     margin: 0;
     padding: 0;
-    height: @tab-height;
+    height: @tab-height;// + 5;
+    // border-bottom: @tab-border-width solid @tab-border-color;
+    // background: @tab-active-background-color;
 
     .tab
     {
@@ -31,8 +35,10 @@
         // max-width: 5000px;
         transition: max-width .25s ease-in-out;
         height: @tab-height;
-        border-bottom: 1px solid @pane-border-color;
-        border-right: 1px solid @pane-border-color;
+        border-bottom: @tab-border-width solid @tab-border-color;
+        border-right: @tab-border-width solid @tab-border-color;
+        // border-left: 1px solid transparent;
+        // border-top: 1px solid transparent;
 
         &:last-child
         {
@@ -43,8 +49,9 @@
         {
             // flex: 2;
             // width: -webkit-fit-content;
-            background-color: @pane-background-color;
+            background-color: @tab-active-background-color;
             border-bottom-color: transparent;
+            border-left-color: @primary-color;
 
             .title
             {
@@ -57,7 +64,7 @@
             overflow: hidden;
             white-space: pre;
             text-overflow: ellipsis;
-            line-height: @tab-height;
+            line-height: @tab-height - @tab-border-width;
             font-size: @tab-font-size;
             text-align: center;
             color: @tab-color;
@@ -150,6 +157,11 @@ via-dock
         .tab
         {
             max-width: 400px;
+
+            &.active
+            {
+                background: transparent;
+            }
         }
     }
 }
