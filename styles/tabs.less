@@ -1,8 +1,8 @@
-@tab-height: 30px;
+@tab-height: 24px;
 @tab-background-color: @dock-background-color;
-@tab-active-background-color: #282828;//@pane-background-color;
+@tab-active-background-color: @pane-background-color;
 
-@tab-font-size: 12px;
+@tab-font-size: 11px;
 @tab-color: @text-color-subtle;
 @tab-active-color: @text-color;
 @tab-border-color: #000;//@pane-border-color;
@@ -18,8 +18,8 @@
     -webkit-user-select: none;
     margin: 0;
     padding: 0;
-    height: @tab-height;// + 5;
-    // border-bottom: @tab-border-width solid @tab-border-color;
+    height: @tab-height + 1;
+    border-bottom: @tab-border-width solid @tab-border-color;
     // background: @tab-active-background-color;
 
     .tab
@@ -35,7 +35,7 @@
         // max-width: 5000px;
         transition: max-width .25s ease-in-out;
         height: @tab-height;
-        border-bottom: @tab-border-width solid @tab-border-color;
+        // border-bottom: @tab-border-width solid @tab-border-color;
         border-right: @tab-border-width solid @tab-border-color;
         // border-left: 1px solid transparent;
         // border-top: 1px solid transparent;
@@ -50,7 +50,7 @@
             // flex: 2;
             // width: -webkit-fit-content;
             background-color: @tab-active-background-color;
-            border-bottom-color: transparent;
+            // border-bottom-color: transparent;
             border-left-color: @primary-color;
 
             .title
@@ -147,21 +147,5 @@
     &.hidden
     {
         display: none;
-    }
-}
-
-via-dock
-{
-    .tab-bar
-    {
-        .tab
-        {
-            max-width: 400px;
-
-            &.active
-            {
-                background: transparent;
-            }
-        }
     }
 }
