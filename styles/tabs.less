@@ -22,6 +22,11 @@
     border-bottom: @tab-border-width solid @tab-border-color;
     // background: @tab-active-background-color;
 
+    &:empty
+    {
+        display: none;
+    }
+
     .tab
     {
         font-size: 11px;
