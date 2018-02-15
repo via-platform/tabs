@@ -1,6 +1,6 @@
-@tab-height: 24px;
-@tab-background-color: @dock-background-color;
-@tab-active-background-color: @pane-background-color;
+@tab-height: 27px;
+@tab-background-color: transparent;
+@tab-active-background-color: @header-background-color;
 
 @tab-font-size: 11px;
 @tab-color: @text-color-subtle;
@@ -18,8 +18,8 @@
     -webkit-user-select: none;
     margin: 0;
     padding: 0;
-    height: @tab-height + 1;
-    border-bottom: @tab-border-width solid @tab-border-color;
+    height: @tab-height;
+    // border-bottom: @tab-border-width solid @tab-border-color;
     // background: @tab-active-background-color;
 
     &:empty
@@ -29,21 +29,20 @@
 
     .tab
     {
+        flex: 1;
         font-size: 11px;
         position: relative;
         padding: 0 (@close-icon-size + @tab-height - @close-icon-size);
         -webkit-user-drag: element;
-        flex: 1;
         background-color: @tab-background-color;
         min-width: 40px;
-        //TODO figure out how to make max width work when tabs have an undefined max width
-        // max-width: 5000px;
+        max-width: 280px;
         transition: max-width .25s ease-in-out;
         height: @tab-height;
-        // border-bottom: @tab-border-width solid @tab-border-color;
-        border-right: @tab-border-width solid @tab-border-color;
-        // border-left: 1px solid transparent;
-        // border-top: 1px solid transparent;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        padding-bottom: 1px;
+        line-height: @tab-height - 2;
 
         &:last-child
         {
@@ -52,11 +51,13 @@
 
         &.active
         {
-            // flex: 2;
-            // width: -webkit-fit-content;
             background-color: @tab-active-background-color;
-            // border-bottom-color: transparent;
-            border-left-color: @primary-color;
+            border-color: @pane-border-color;
+            height: @tab-height + 1;
+            margin-bottom: -1px;
+            z-index: 2;
+            padding-bottom: 0;
+            line-height: @tab-height - 1;
 
             .title
             {
@@ -152,5 +153,16 @@
     &.hidden
     {
         display: none;
+    }
+}
+
+via-dock
+{
+    .tab-bar
+    {
+        .tab
+        {
+            max-width: none;
+        }
     }
 }
