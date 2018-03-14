@@ -1,4 +1,4 @@
-@tab-height: 27px;
+@tab-height: 25px;
 @tab-background-color: transparent;
 @tab-active-background-color: @header-background-color;
 
@@ -9,7 +9,7 @@
 @tab-border-width: 1px;//@pane-border-width;
 
 @close-icon-size: 16px;
-@close-icon-background-color: #CCC;
+@close-icon-background-color: @primary-color;
 @close-icon-border-radius: 2px;
 
 .tab-bar
@@ -88,8 +88,8 @@
         {
             position: absolute;
             cursor: default;
-            top: (@tab-height - @close-icon-size) / 2;
-            right: (@tab-height - @close-icon-size) / 2;
+            top: (@tab-height - @close-icon-size + 1) / 2;
+            right: (@tab-height - @close-icon-size + 1) / 2;
             width: @close-icon-size;
             height: @close-icon-size;
             border-radius: @close-icon-border-radius;
@@ -97,6 +97,7 @@
             background-repeat: no-repeat;
             background-size: 10px 10px;
             background-position: 3px 4px;
+            background-image: url('via://tabs/images/close.svg');
             transform: scale(0);
             transition: transform ease 0.1s;
 
