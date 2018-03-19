@@ -29,9 +29,6 @@ menu: [
     {label: 'Open In New Window', command: 'tabs:open-in-new-window'}
     {type: 'separator'}
   ]
-  '.tab.pending-tab': [
-    {label: 'Keep Pending Tab', command: 'tabs:keep-pending-tab'}
-  ]
   '.tab-bar': [
     {label: 'Reopen Closed Tab', command: 'pane:reopen-closed-item'}
   ]

@@ -12,6 +12,17 @@
 @close-icon-background-color: @primary-color;
 @close-icon-border-radius: 2px;
 
+@link-icon-size: @close-icon-size;
+@link-icon-color-size: 10px;
+
+@tab-color-red: rgb(255, 59, 48);
+@tab-color-orange: rgb(255, 149, 0);
+@tab-color-yellow: rgb(255, 204, 0);
+@tab-color-green: rgb(76, 217, 100);
+@tab-color-teal: rgb(90, 200, 250);
+@tab-color-blue: rgb(0, 122, 255);
+@tab-color-purple: rgb(88, 86, 214);
+
 .tab-bar
 {
     display: flex;
@@ -19,8 +30,6 @@
     margin: 0;
     padding: 0;
     height: @tab-height;
-    // border-bottom: @tab-border-width solid @tab-border-color;
-    // background: @tab-active-background-color;
 
     &:empty
     {
@@ -107,13 +116,90 @@
             }
         }
 
-        &:hover .close-icon
+        &:hover
         {
-            transform: scale(1);
+            .close-icon
+            {
+                transform: scale(1);
+            }
+
+            .link-color
+            {
+                border-color: lighten(@header-background-color, 30%);
+                opacity: 1;
+            }
+        }
+
+        .link-icon
+        {
+            position: absolute;
+            cursor: default;
+            top: (@tab-height - @close-icon-size + 1) / 2;
+            left: (@tab-height - @close-icon-size + 1) / 2;
+            padding: (@link-icon-size - @link-icon-color-size) / 2;
+            width: @link-icon-size;
+            height: @link-icon-size;
+        }
+
+        .link-color
+        {
+            width: @link-icon-color-size;
+            height: @link-icon-color-size;
+            border-radius: @link-icon-color-size / 2;
+            border: 2px solid lighten(@header-background-color, 10%);
+            box-sizing: border-box;
+            transition: all ease 0.2s;
+            opacity: 0;
+
+            &:hover
+            {
+                border-color: @text-color;
+            }
+
+            &.red
+            {
+                border-color: @tab-color-red;
+                background-color: @tab-color-red;
+            }
+
+            &.orange
+            {
+                border-color: @tab-color-orange;
+                background-color: @tab-color-orange;
+            }
+
+            &.yellow
+            {
+                border-color: @tab-color-yellow;
+                background-color: @tab-color-yellow;
+            }
+
+            &.green
+            {
+                border-color: @tab-color-green;
+                background-color: @tab-color-green;
+            }
+
+            &.teal
+            {
+                border-color: @tab-color-teal;
+                background-color: @tab-color-teal;
+            }
+
+            &.blue
+            {
+                border-color: @tab-color-blue;
+                background-color: @tab-color-blue;
+            }
+
+            &.purple
+            {
+                border-color: @tab-color-purple;
+                background-color: @tab-color-purple;
+            }
         }
     }
 
-    /* Drag and Drop */
     .placeholder
     {
         position: relative;
@@ -130,24 +216,25 @@
             content: "";
             position: absolute;
             width: 2px;
-            margin: -1px; padding: 0;
-            height: inherit;
-            background: inherit;
+            margin: 0;//-1px;
+            padding: 0;
+            height: @tab-height;
+            background: @primary-color;
         }
 
         &:after
         {
             content: "";
             position: absolute;
-            top: @tab-height;
-            margin-top: -1px;
-            margin-left: -2px;
+            top: 0;
+            bottom: 0;
+            left: -2px;
             z-index: 9999;
-            width: 4px;
-            height: 4px;
-            background: inherit;
-            border-radius: 4px;
-            border: 1px solid transparent;
+            width: 6px;
+            height: 6px;
+            background: @primary-color;
+            transform: rotate(45deg);
+            margin: auto;
         }
     }
 
