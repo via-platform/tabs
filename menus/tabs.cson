@@ -13,7 +13,6 @@ menu: [
     {label: 'Close Other Tabs', command: 'tabs:close-other-tabs'}
     {label: 'Close Tabs to the Right', command: 'tabs:close-tabs-to-right'}
     {label: 'Close Tabs to the Left', command: 'tabs:close-tabs-to-left'}
-    {label: 'Close Saved Tabs', command: 'tabs:close-saved-tabs'}
     {label: 'Close All Tabs', command: 'tabs:close-all-tabs'}
 
     {type: 'separator'}
