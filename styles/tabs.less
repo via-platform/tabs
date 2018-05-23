@@ -1,4 +1,4 @@
-@tab-height: 25px;
+@tab-height: 22px;
 @tab-background-color: transparent;
 @tab-active-background-color: @header-background-color;
 
@@ -12,8 +12,8 @@
 @close-icon-background-color: @primary-color;
 @close-icon-border-radius: 2px;
 
-@link-icon-size: @close-icon-size;
-@link-icon-color-size: 10px;
+@link-icon-size: 10px;
+@link-icon-color-size: 8px;
 
 @tab-color-red: rgb(255, 59, 48);
 @tab-color-orange: rgb(255, 149, 0);
@@ -30,6 +30,8 @@
     margin: 0;
     padding: 0;
     height: @tab-height;
+    background: #282828; //@pane-background-color;
+    z-index: 3;
 
     &:empty
     {
@@ -38,7 +40,7 @@
 
     .tab
     {
-        flex: 1;
+        // flex: 1;
         font-size: 11px;
         position: relative;
         padding: 0 (@close-icon-size + @tab-height - @close-icon-size);
@@ -46,31 +48,42 @@
         background-color: @tab-background-color;
         min-width: 40px;
         max-width: 280px;
-        transition: max-width .25s ease-in-out;
+        // transition: max-width .25s ease-in-out;
         height: @tab-height;
-        border: 1px solid transparent;
         border-bottom: 0;
-        padding-bottom: 1px;
-        line-height: @tab-height - 2;
-
-        &:last-child
-        {
-            border-right-color: transparent;
-        }
+        // padding-bottom: 1px;
+        line-height: @tab-height;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
 
         &.active
         {
             background-color: @tab-active-background-color;
-            border-color: @pane-border-color;
+            // border-color: @header-border-color;//@pane-border-color;
             height: @tab-height + 1;
             margin-bottom: -1px;
             z-index: 2;
             padding-bottom: 0;
-            line-height: @tab-height - 1;
+            // line-height: @tab-height - 1;
+            // border-top-color: #999;
+            border-left-color: @header-border-color;
+            border-right-color: @header-border-color;
+
+            &:first-child
+            {
+                border-left-color: transparent;
+            }
 
             .title
             {
                 color: @tab-active-color;
+            }
+
+            .link-color.unlinked
+            {
+                border-color: #FFF;
             }
         }
 
@@ -97,8 +110,8 @@
         {
             position: absolute;
             cursor: default;
-            top: (@tab-height - @close-icon-size + 1) / 2;
-            right: (@tab-height - @close-icon-size + 1) / 2;
+            top: (@tab-height - @close-icon-size) / 2;
+            right: (@tab-height - @close-icon-size) / 2;
             width: @close-icon-size;
             height: @close-icon-size;
             border-radius: @close-icon-border-radius;
@@ -125,8 +138,8 @@
 
             .link-color
             {
-                border-color: lighten(@header-background-color, 30%);
-                opacity: 1;
+                // border-color: lighten(@header-background-color, 30%);
+                // opacity: 1;
             }
         }
 
@@ -134,8 +147,8 @@
         {
             position: absolute;
             cursor: default;
-            top: (@tab-height - @close-icon-size + 1) / 2;
-            left: (@tab-height - @close-icon-size + 1) / 2;
+            top: (@tab-height - @link-icon-size) / 2;
+            left: (@tab-height - @link-icon-size) / 2;
             padding: (@link-icon-size - @link-icon-color-size) / 2;
             width: @link-icon-size;
             height: @link-icon-size;
@@ -146,10 +159,10 @@
             width: @link-icon-color-size;
             height: @link-icon-color-size;
             border-radius: @link-icon-color-size / 2;
-            border: 2px solid lighten(@header-background-color, 10%);
+            border: 1px solid @text-color-subtle;
             box-sizing: border-box;
             transition: all ease 0.2s;
-            opacity: 0;
+            // opacity: 0;
 
             &:hover
             {
@@ -250,7 +263,24 @@ via-dock
     {
         .tab
         {
-            max-width: none;
+            // max-width: none;
         }
+    }
+}
+
+via-pane.has-focus
+{
+    .tab.active::before
+    {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: 0;
+        left: -1px;
+        border: 1px solid @primary-color;
+        border-bottom: 0;
+        pointer-events: none;
+        content: "";
+        z-index: 2;
     }
 }
