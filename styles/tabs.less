@@ -26,12 +26,13 @@
 .tab-bar
 {
     display: flex;
-    -webkit-user-select: none;
+    user-select: none;
     margin: 0;
     padding: 0;
     height: @tab-height;
     background: #282828; //@pane-background-color;
     z-index: 3;
+    list-style: none;
 
     &:empty
     {
@@ -254,17 +255,6 @@
     &.hidden
     {
         display: none;
-    }
-}
-
-via-dock
-{
-    .tab-bar
-    {
-        .tab
-        {
-            // max-width: none;
-        }
     }
 }
 

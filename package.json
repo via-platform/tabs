@@ -54,6 +54,5 @@
       "default": true,
       "description": "Enable tab switching in most-recently-used order. This setting has no effect if ctrl-tab or ctrl-shift-tab are already rebound via your keymap or another package."
     }
-  },
-  "false": {}
+  }
 }
