@@ -1,6 +1,6 @@
 {
   "name": "tabs",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "description": "Via workspace tabs.",
   "main": "./lib/main",
   "scripts": {
