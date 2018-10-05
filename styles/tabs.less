@@ -1,10 +1,10 @@
-@tab-height: 22px;
+@tab-height: 20px;
 @tab-background-color: transparent;
 @tab-active-background-color: @header-background-color;
 
 @tab-font-size: 11px;
 @tab-color: @text-color-subtle;
-@tab-active-color: @text-color;
+@tab-active-color: @text-color-subtle;
 @tab-border-color: #000;//@pane-border-color;
 @tab-border-width: 1px;//@pane-border-width;
 
@@ -34,6 +34,11 @@
     z-index: 3;
     list-style: none;
 
+    &.only-child
+    {
+        height: @tab-height - 4;
+    }
+
     &:empty
     {
         display: none;
@@ -42,22 +47,51 @@
     .tab
     {
         // flex: 1;
+        max-width: 280px;
         font-size: 11px;
         position: relative;
-        padding: 0 (@close-icon-size + @tab-height - @close-icon-size);
+        padding: 0 4px 0 6px;
         -webkit-user-drag: element;
         background-color: @tab-background-color;
         min-width: 40px;
-        max-width: 280px;
-        // transition: max-width .25s ease-in-out;
         height: @tab-height;
         border-bottom: 0;
-        // padding-bottom: 1px;
         line-height: @tab-height;
-        border-left: 1px solid transparent;
-        border-right: 1px solid transparent;
+        border-left: 1px solid @header-border-color;
         -webkit-font-smoothing: antialiased;
         font-weight: 500;
+        display: flex;
+        align-items: center;
+
+        &:first-child
+        {
+            border-left: 0;
+        }
+
+        &:last-child::after
+        {
+            position: absolute;
+            top: 0;
+            right: -1px;
+            bottom: 1px;
+            width: 1px;
+            background: @header-border-color;
+            pointer-events: none;
+            content: "";
+            z-index: 2;
+        }
+
+        &:only-child
+        {
+            flex: 1;
+            max-width: none;
+            border-left: 0;
+
+            &.active
+            {
+                margin-bottom: -3px;
+            }
+        }
 
         &.active
         {
@@ -67,10 +101,11 @@
             margin-bottom: -1px;
             z-index: 2;
             padding-bottom: 0;
+            padding-bottom: 1px;
             // line-height: @tab-height - 1;
             // border-top-color: #999;
-            border-left-color: @header-border-color;
-            border-right-color: @header-border-color;
+            // border-left-color: @header-border-color;
+            // border-right-color: @header-border-color;
 
             &:first-child
             {
@@ -93,10 +128,12 @@
             overflow: hidden;
             white-space: pre;
             text-overflow: ellipsis;
-            line-height: @tab-height - @tab-border-width;
+            line-height: @tab-height;
             font-size: @tab-font-size;
-            text-align: center;
+            text-align: left;
             color: @tab-color;
+            flex: 1;
+            padding: 0 6px;
         }
 
         .hide-icon
@@ -109,10 +146,10 @@
 
         .close-icon
         {
-            position: absolute;
+            // position: absolute;
             cursor: default;
-            top: (@tab-height - @close-icon-size) / 2;
-            right: (@tab-height - @close-icon-size) / 2;
+            // top: (@tab-height - @close-icon-size) / 2;
+            // right: (@tab-height - @close-icon-size) / 2;
             width: @close-icon-size;
             height: @close-icon-size;
             border-radius: @close-icon-border-radius;
@@ -123,6 +160,7 @@
             background-image: url('via://tabs/images/close.svg');
             transform: scale(0);
             transition: transform ease 0.1s;
+            margin-left: 4px;
 
             &:hover
             {
@@ -146,10 +184,10 @@
 
         .link-icon
         {
-            position: absolute;
+            // position: absolute;
             cursor: default;
-            top: (@tab-height - @link-icon-size) / 2;
-            left: (@tab-height - @link-icon-size) / 2;
+            // top: (@tab-height - @link-icon-size) / 2;
+            // left: (@tab-height - @link-icon-size) / 2;
             padding: (@link-icon-size - @link-icon-color-size) / 2;
             width: @link-icon-size;
             height: @link-icon-size;
@@ -263,8 +301,8 @@ via-pane.has-focus
     .tab.active::before
     {
         position: absolute;
-        top: -1px;
-        right: -1px;
+        top: 0;
+        right: 0;
         bottom: 0;
         left: -1px;
         border: 1px solid @primary-color;
@@ -272,5 +310,10 @@ via-pane.has-focus
         pointer-events: none;
         content: "";
         z-index: 2;
+    }
+
+    .tab.active:first-child::before
+    {
+        left: 0;
     }
 }
